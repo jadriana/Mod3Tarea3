@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+    }
+}
+
+apply plugin: "io.qameta.allure"
+apply plugin: "java"
+
+
+group 'ucb_owaspzap'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+
+    //API - resteasy
+    implementation 'org.jboss.resteasy:resteasy-jaxrs:3.0.8.Final'
+    implementation 'org.jboss.resteasy:resteasy-client:3.0.8.Final'
+    implementation 'org.jboss.resteasy:resteasy-multipart-provider:3.0.8.Final'
+    implementation 'org.jboss.resteasy:resteasy-jackson-provider:3.0.8.Final'
+    implementation 'org.glassfish.jersey.media:jersey-media-multipart:2.22.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
+
+    //JSON
+    implementation group: 'org.json', name: 'json', version: '20210307'
+
+    testImplementation group: 'io.qameta.allure', name: 'allure-junit4', version: '2.14.0'
+
+}
+
+
+allure{
+    version ='2.14.0'
+    autoconfigure = true
+    aspectjweaver = true
+}
